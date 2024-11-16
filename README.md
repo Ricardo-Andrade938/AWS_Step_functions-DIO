@@ -1,5 +1,8 @@
 # AWS_Step_functions-DIO
-Abaixo segue estrutura ajustada do código em JSON, para atender ao projeto prático do bootcamp NEXAS Engenharia de Prompts na AWS com Claude
+
+Abaixo segue estrutura ajustada do código em JSON, para atender ao projeto prático do bootcamp NEXAS Engenharia de Prompts na AWS com Claude:
+
+```json
 {
   "Comment": "An example of using Bedrock to chain prompts and their responses together.",
   "StartAt": "Pergunta hotéis em Aracaju",
@@ -37,7 +40,7 @@ Abaixo segue estrutura ajustada do código em JSON, para atender ao projeto prá
       "Type": "Pass",
       "Next": "Pergunta melhores passeios em Aracaju",
       "Parameters": {
-        "convo_one.$": "States.Format('{}\n{}', $.prompt_one, $.result_one.result_one)"
+        "convo_one.$": "States.Format('{}\\n{}', $.prompt_one, $.result_one.result_one)"
       },
       "ResultPath": "$.convo_one"
     },
@@ -74,7 +77,7 @@ Abaixo segue estrutura ajustada do código em JSON, para atender ao projeto prá
       "Type": "Pass",
       "Next": "Pergunta melhor lugar para jantar romantico em Aracaju",
       "Parameters": {
-        "convo_two.$": "States.Format('{}\n{}\n{}', $.convo_one.convo_one, $.prompt_two, $.result_two.result_two)"
+        "convo_two.$": "States.Format('{}\\n{}\\n{}', $.convo_one.convo_one, $.prompt_two, $.result_two.result_two)"
       },
       "ResultPath": "$.convo_two"
     },
